@@ -4,6 +4,8 @@
 - Docker: 29.2.0, build 0b9d198
 - Git: 2.50.1 (Apple Git-155)
 
+> 참고: 아래 로그의 `/Users/kang/...` 경로(작업 폴더·Docker CLI 플러그인·소켓)는 작성자 맥북 기준입니다. 다른 PC에서는 경로가 다르므로 `pwd`, `docker context ls` 결과에 맞춰 읽어 주세요.
+
 
 
 # 2) 수행 체크리스트
@@ -341,9 +343,7 @@ kang@kangs-MacBook-Air ~ %
 ```
 
 ### attach/exec 관찰
-```
-docker exec 로 접속 후 exit 했을 때는 docker ps 에서 컨테이너가 Up 상태를 유지했으나, docker attach 로 접속 후 exit 했을 때는 메인 프로세스(PID 1)가 종료 신호를 받아 Exited (0) 상태로 중지됨을 확인했습니다.
-```
+docker exec 로 접속 후 exit 했을 때는 docker ps 에서 컨테이너가 Up 상태를 유지했으나, docker attach 로 접속 후 exit 했을 때는 메인 프로세스(PID 1)가 종료되면서 컨테이너가 중지되어 docker ps 목록에서 사라졌습니다. (Exited 상태 값은 `docker ps -a` 로 확인하는 것이 정확합니다.)
 
 
 
